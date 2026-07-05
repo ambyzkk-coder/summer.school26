@@ -1,4 +1,17 @@
 
+:root {
+    --bg-main: #f3f4f6;          /* Grigio chiarissimo e caldo per lo sfondo generale */
+    --bg-card: #ffffff;          /* Bianco puro per i box di contenuto */
+    --primary: #4f46e5;          /* Blu elettrico/Indaco moderno per gli accenti importanti */
+    --primary-hover: #4338ca;    /* Varianta più scura per l'effetto hover */
+    --text-dark: #111827;        /* Grigio quasi nero per la massima leggibilità dei titoli */
+    --text-muted: #4b5563;       /* Grigio medio per i testi dei paragrafi */
+    --border-color: #e5e7eb;     /* Grigio leggero per i bordi sottili */
+    --radius: 12px;              /* Arrotondamento moderno per gli angoli */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animazione fluida */
+}
+
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
