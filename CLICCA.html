@@ -1,26 +1,12 @@
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaunaView - Galleria Animali</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>��ɥ</text></svg>">
-    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <link rel="stylesheet" href="CLICCA.css">
     <style>
-        /* --- STILI GENERALI --- */
         * {
             margin: 0;
             padding: 0;
@@ -29,12 +15,12 @@
         }
 
         body {
-            background-color: #f4f7f6;
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='%23000' fill-opacity='0.06'%3E%3Cellipse cx='30' cy='30' rx='12' ry='10'/%3E%3Cellipse cx='50' cy='28' rx='8' ry='6'/%3E%3Cellipse cx='18' cy='45' rx='8' ry='6'/%3E%3Cellipse cx='42' cy='48' rx='8' ry='6'/%3E%3Cellipse cx='130' cy='80' rx='12' ry='10'/%3E%3Cellipse cx='150' cy='78' rx='8' ry='6'/%3E%3Cellipse cx='118' cy='95' rx='8' ry='6'/%3E%3Cellipse cx='142' cy='98' rx='8' ry='6'/%3E%3Cellipse cx='80' cy='150' rx='12' ry='10'/%3E%3Cellipse cx='100' cy='148' rx='8' ry='6'/%3E%3Cellipse cx='68' cy='165' rx='8' ry='6'/%3E%3Cellipse cx='92' cy='168' rx='8' ry='6'/%3E%3Cellipse cx='170' cy='170' rx='12' ry='10'/%3E%3Cellipse cx='190' cy='168' rx='8' ry='6'/%3E%3Cellipse cx='158' cy='185' rx='8' ry='6'/%3E%3Cellipse cx='182' cy='188' rx='8' ry='6'/%3E%3C/g%3E%3C/svg%3E");
             color: #333;
             line-height: 1.6;
         }
 
-        /* --- Sfondo della Pagina Principale --- */
         header {
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
@@ -56,7 +42,6 @@
             opacity: 0.9;
         }
 
-        /* --- NAVIGAZIONE --- */
         nav {
             background-color: #2c3e50;
             position: sticky;
@@ -86,7 +71,6 @@
             color: #2c3e50;
         }
 
-        /* --- CONTENUTO PRINCIPALE --- */
         main {
             max-width: 1200px;
             margin: 40px auto;
@@ -95,7 +79,7 @@
 
         .category-section {
             margin-bottom: 60px;
-            scroll-margin-top: 70px; /* Evita che il menu fisso copra il titolo quando clicchi */
+            scroll-margin-top: 70px;
         }
 
         .category-title {
@@ -107,7 +91,6 @@
             text-transform: uppercase;
         }
 
-        /* --- GRIGLIA DELLE IMMAGINI --- */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -130,7 +113,7 @@
         .animal-card img {
             width: 100%;
             height: 250px;
-            object-fit: cover; /* Taglia l'immagine perfettamente senza distorcerla */
+            object-fit: cover;
             display: block;
         }
 
@@ -149,7 +132,12 @@
             margin-bottom: 15px;
         }
 
-        /* Bottone d'azione */
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .btn-view {
             display: inline-block;
             background-color: #1abc9c;
@@ -166,7 +154,45 @@
             background-color: #16a085;
         }
 
-        /* --- PI+� DI PAGINA --- */
+        .btn-sound {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn-sound:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-sound:active {
+            transform: scale(0.95);
+        }
+
+        .btn-sound.playing {
+            background-color: #f39c12;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
         footer {
             background-color: #2c3e50;
             color: #bdc3c7;
@@ -177,12 +203,6 @@
 
         footer p {
             font-size: 0.9rem;
-        }
-
-        .map-container {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -195,50 +215,62 @@
 
     <nav>
         <ul>
-            <li><a href="#domestici">Animali Domestici</a></li> 
-            <li><a href="#Selvatici">Selvatici</a></li>
-            <li><a href="#uccelli">Uccelli</a></li>
-            <li><a href="#marini">Animali Marini</a></li>
-            <li><a href="#rettili">Rettili</a></li>
-            <li><a href="#zoo">Zoo del Mondo</a></li>
+            <li><a href="#selvatici">🦁 Selvatici</a></li>
+            <li><a href="#domestici">🐕 Animali Domestici</a></li>
+            <li><a href="#uccelli">🦅 Uccelli</a></li>
+            <li><a href="#marini">🐬 Animali Marini</a></li>
+            <li><a href="#rettili">🦎 Rettili</a></li>
+            <li><a href="#zoo">🗺️ Zoo del Mondo</a></li>
         </ul>
     </nav>
 
     <main>
 
-        <section id="Selvatici" class="category-section">
-            <h2 class="category-title"> Selvatici</h2>
+        <section id="selvatici" class="category-section">
+            <h2 class="category-title">🦁 Selvatici</h2>
             <div class="image-grid">
                 <div class="animal-card">
-                    <img src="zebra.jpg" alt="Zebra">
+                    <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80" alt="Leone">
                     <div class="animal-info">
                         <h3>Leone Africano</h3>
-                        <p>Il fiero re della savana catturato nella sua maestosit+� naturale.</p>
-                        <a href="https://unsplash.com/it/s/foto/leone" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il fiero re della savana catturato nella sua maestosita naturale.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('leone')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/leone" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="volpe2.jpg" alt="Volpe">
                     <div class="animal-info">
                         <h3>Volpe Rossa</h3>
-                        <p>Un incontro ravvicinato con uno dei Selvatici pi+� furbi e affascinanti del bosco.</p>
-                        <a href="https://unsplash.com/it/s/foto/volpe" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Un incontro ravvicinato con uno dei Selvatici piu furbi del bosco.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('volpe')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/volpe" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="elefante.jpg" alt="Elefante">
                     <div class="animal-info">
                         <h3>Elefante Africano</h3>
-                        <p>Il gigante gentile delle savane africane, simbolo di saggezza e memoria.</p>
-                        <a href="https://unsplash.com/it/s/foto/elefante" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il gigante gentile delle savane africane, simbolo di saggezza.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('elefante')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/elefante" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="giraffa.jpg" alt="Giraffa">
                     <div class="animal-info">
                         <h3>Giraffa</h3>
-                        <p>L'animale piu alto del mondo che brucia tra gli alberi della savana.</p>
-                        <a href="https://unsplash.com/it/s/foto/giraffa" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>L'animale piu alto del mondo che bruca tra gli alberi.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('giraffa')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/giraffa" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -246,7 +278,10 @@
                     <div class="animal-info">
                         <h3>Zebra</h3>
                         <p>Elegante e unica, ogni esemplare ha un pattern di strisce diverso.</p>
-                        <a href="https://unsplash.com/it/s/foto/zebra" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('zebra')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/zebra" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -254,7 +289,10 @@
                     <div class="animal-info">
                         <h3>Tigre del Bengala</h3>
                         <p>Il maestoso felino maculato delle foreste asiatiche.</p>
-                        <a href="https://unsplash.com/it/s/foto/tigre" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('tigre')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/tigre" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -262,7 +300,10 @@
                     <div class="animal-info">
                         <h3>Orso Polare</h3>
                         <p>Il signore dei ghiacci artici, maestoso e potente.</p>
-                        <a href="https://unsplash.com/it/s/foto/orso-polare" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('orso')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/orso-polare" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -270,7 +311,10 @@
                     <div class="animal-info">
                         <h3>Scimmia</h3>
                         <p>Intelligente e vivace, parente stretto dell'uomo.</p>
-                        <a href="https://unsplash.com/it/s/foto/scimmia" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('scimmia')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/scimmia" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -278,7 +322,10 @@
                     <div class="animal-info">
                         <h3>Lupo</h3>
                         <p>Il predatore sociale per eccellenza, ancestrale e misterioso.</p>
-                        <a href="https://unsplash.com/it/s/foto/lupo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('lupo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/lupo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -286,61 +333,82 @@
                     <div class="animal-info">
                         <h3>Koala</h3>
                         <p>L'iconico marsupiale australiano che vive tra gli eucalipti.</p>
-                        <a href="https://unsplash.com/it/s/foto/koala" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('koala')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/koala" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="domestici" class="category-section">
-            <h2 class="category-title"> Animali Domestici</h2>
+            <h2 class="category-title">🐕 Animali Domestici</h2>
             <div class="image-grid">
                 <div class="animal-card">
-                    <img src="orso polare.jpg" alt="Orso Polare">
+                    <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80" alt="Golden Retriever">
                     <div class="animal-info">
                         <h3>Cane (Golden Retriever)</h3>
-                        <p>Il compagno di vita ideale: fedele, giocherellone e perfetto per le famiglie.</p>
-                        <a href="https://unsplash.com/it/s/foto/cane" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il compagno di vita ideale: fedele e perfetto per le famiglie.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('cane')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/cane" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" alt="Gatto Domestico">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80" alt="Gatto">
                     <div class="animal-info">
                         <h3>Gatto Domestico</h3>
-                        <p>Indipendente ma affettuoso, il re indiscusso del divano e delle fusa.</p>
-                        <a href="https://unsplash.com/it/s/foto/gatto" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Indipendente ma affettuoso, il re del divano e delle fusa.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('gatto')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/gatto" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
-                    <img src="past.ted.jpg" alt="Cane Pastore Tedesco">
+                    <img src="past.ted.jpg" alt="Pastore Tedesco">
                     <div class="animal-info">
                         <h3>Cane (Pastore Tedesco)</h3>
-                        <p>Intelligente e leale, perfetto per la guardia e l'addestramento.</p>
-                        <a href="https://unsplash.com/it/s/foto/cane" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Intelligente e leale, perfetto per la guardia.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('cane')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/cane" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="coniglio.jpg" alt="Coniglio">
                     <div class="animal-info">
                         <h3>Coniglio</h3>
-                        <p>Dolce e tenero, con le sue lunghe orecchie e il morbido pelo.</p>
-                        <a href="https://unsplash.com/it/s/foto/coniglio" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Dolce e tenero, con le sue lunghe orecchie.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('coniglio')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/coniglio" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="criceto.jpg" alt="Criceto">
                     <div class="animal-info">
                         <h3>Criceto</h3>
-                        <p>Piccolo e vivace, riempie le guance di semi e corre sulla ruota.</p>
-                        <a href="https://unsplash.com/it/s/foto/criceto" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Piccolo e vivace, riempie le guance di semi.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('criceto')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/criceto" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="pappagallo.jpg" alt="Pappagallo">
                     <div class="animal-info">
                         <h3>Pappagallo</h3>
-                        <p>Colorato e chiacchierone, impara parole e fa compagnia.</p>
-                        <a href="https://unsplash.com/it/s/foto/pappagallo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Colorato e chiacchierone, impara parole.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('pappagallo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/pappagallo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
@@ -348,249 +416,333 @@
                     <div class="animal-info">
                         <h3>Cavallo</h3>
                         <p>Nobile e forte, compagno dell'uomo da millenni.</p>
-                        <a href="https://unsplash.com/it/s/foto/cavallo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('cavallo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/cavallo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
-                    <img src="labrador.jpg" alt="Cane Labrador">
+                    <img src="labrador.jpg" alt="Labrador">
                     <div class="animal-info">
                         <h3>Cane (Labrador)</h3>
-                        <p>Amichevole e giocherellone, il cane di famiglia per eccellenza.</p>
-                        <a href="https://unsplash.com/it/s/foto/cane" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Amichevole e giocherellone, il cane di famiglia.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('cane')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/cane" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="uccelli" class="category-section">
-            <h2 class="category-title"> Uccelli</h2>
+            <h2 class="category-title">🦅 Uccelli</h2>
             <div class="image-grid">
                 <div class="animal-card">
                     <img src="aquila.jpg" alt="Aquila">
                     <div class="animal-info">
                         <h3>Aquila Reale</h3>
-                        <p>Il predatore dei cieli colto durante un volo sopra le vette montuose.</p>
-                        <a href="https://unsplash.com/it/s/foto/aquila" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il predatore dei cieli sopra le vette montuose.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('aquila')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/aquila" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="Martin Pescatore.jpg" alt="Martin Pescatore">
                     <div class="animal-info">
                         <h3>Martin Pescatore</h3>
-                        <p>Esplosione di colori vivaci in un piccolo e abilissimo pescatore fluviale.</p>
-                        <a href="https://unsplash.com/it/s/foto/martin-pescatore" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Esplosione di colori in un piccolo pescatore.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('uccello')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/martin-pescatore" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="gufo.jpg" alt="Gufo">
                     <div class="animal-info">
                         <h3>Gufo</h3>
-                        <p>Il saggio della notte, con i suoi grandi occhi penetranti.</p>
-                        <a href="https://unsplash.com/it/s/foto/gufo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il saggio della notte con grandi occhi.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('gufo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/gufo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
-                    <img src="fenicottero.jpg" alt="Flamingo">
+                    <img src="fenicottero.jpg" alt="Fenicottero">
                     <div class="animal-info">
-                        <h3>Flamingo</h3>
-                        <p>Elegante e roseo, simbolo delle lagune tropicali.</p>
-                        <a href="https://unsplash.com/it/s/foto/flamingo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <h3>Fenicottero</h3>
+                        <p>Elegante e roseo, simbolo delle lagune.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('fenicottero')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/flamingo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="pettirosso.jpg" alt="Pettirosso">
                     <div class="animal-info">
                         <h3>Pettirosso</h3>
-                        <p>Il piccolo uccello dal petto rosso che rallegra i giardini.</p>
-                        <a href="https://unsplash.com/it/s/foto/pettirosso" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il piccolo uccello dal petto rosso.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('pettirosso')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/pettirosso" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="pinguino.jpg" alt="Pinguino">
                     <div class="animal-info">
                         <h3>Pinguino</h3>
-                        <p>Il buffo abitante dell'Antartide che non sa volare ma nuota benissimo.</p>
-                        <a href="https://unsplash.com/it/s/foto/pinguino" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il buffo abitante dell'Antartide.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('pinguino')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/pinguino" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="tucano.jpg" alt="Tucano">
                     <div class="animal-info">
                         <h3>Tucano</h3>
-                        <p>Il coloratissimo uccello tropicale dal becco gigante.</p>
-                        <a href="https://unsplash.com/it/s/foto/tucano" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il coloratissimo uccello dal becco gigante.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('tucano')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/tucano" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="colibri.jpg" alt="Colibri">
                     <div class="animal-info">
                         <h3>Colibri</h3>
-                        <p>Il piu piccolo degli uccelli, che batte le ali come una elica.</p>
-                        <a href="https://unsplash.com/it/s/foto/colibri" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il piu piccolo degli uccelli.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('colibri')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/colibri" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="pavone.jpg" alt="Pavone">
                     <div class="animal-info">
                         <h3>Pavone</h3>
-                        <p>Lo spettacolo della natura con la sua coda a ventaglio iridescente.</p>
-                        <a href="https://unsplash.com/it/s/foto/pavone" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Lo spettacolo della natura con la sua coda.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('pavone')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/pavone" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="marini" class="category-section">
-            <h2 class="category-title"> Animali Marini</h2>
+            <h2 class="category-title">🐬 Animali Marini</h2>
             <div class="image-grid">
                 <div class="animal-card">
                     <img src="Tartaruga Marina.jpg" alt="Tartaruga Marina">
                     <div class="animal-info">
                         <h3>Tartaruga Marina</h3>
-                        <p>Un viaggio rilassante nelle profondit+� dell'oceano insieme a una creatura millenaria.</p>
-                        <a href="https://unsplash.com/it/s/foto/tartaruga-marina" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Un viaggio nelle profondita dell'oceano.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('tartaruga')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/tartaruga-marina" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
-                    <img src="Squalo Bianco.jpg" alt="Squalo Bianco">
+                    <img src="Squalo Bianco.jpg" alt="Squalo">
                     <div class="animal-info">
                         <h3>Squalo Bianco</h3>
-                        <p>La potenza pura del predatore oceanico per eccellenza nelle acque cristalline.</p>
-                        <a href="https://unsplash.com/it/s/foto/squalo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il predatore oceanico per eccellenza.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('squalo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/squalo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="delfino.jpg" alt="Delfino">
                     <div class="animal-info">
                         <h3>Delfino</h3>
-                        <p>Intelligente e giocherellone, l'acrobata dei mari che ama saltare tra le onde.</p>
-                        <a href="https://unsplash.com/it/s/foto/delfino" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>L'acrobata dei mari che ama saltare.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('delfino')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/delfino" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
-                    <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=600&q=80" alt="Balenottera">
+                    <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=600&q=80" alt="Balena">
                     <div class="animal-info">
                         <h3>Balenottera</h3>
-                        <p>Il gigante dei mari, maestoso e misterioso nei suoi lunghi viaggi oceanici.</p>
-                        <a href="https://unsplash.com/it/s/foto/balena" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il gigante dei mari nei suoi viaggi oceanici.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('balena')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/balena" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="medusa.jpg" alt="Medusa">
                     <div class="animal-info">
                         <h3>Medusa</h3>
-                        <p>Eterea e luminosa, fluttua nelle correnti come un fantasma trasparente.</p>
-                        <a href="https://unsplash.com/it/s/foto/medusa" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Eterea e luminosa, fluttua nelle correnti.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('medusa')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/medusa" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="polpo.jpg" alt="Polpo">
                     <div class="animal-info">
                         <h3>Polpo</h3>
-                        <p>Il genio del mare con otto braccia e capacita di mimetismo incredibili.</p>
-                        <a href="https://unsplash.com/it/s/foto/polpo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il genio del mare con otto braccia.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('polpo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/polpo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="pagliaccio.jpg" alt="Pesce Pagliaccio">
                     <div class="animal-info">
                         <h3>Pesce Pagliaccio</h3>
-                        <p>Il coloratissimo abitante delle barriere coralline, famoso del film Nemo.</p>
-                        <a href="https://unsplash.com/it/s/foto/pesce" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>L'abitante delle barriere coralline.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('pesce')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/pesce" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="foca.jpg" alt="Foca">
                     <div class="animal-info">
                         <h3>Foca</h3>
-                        <p>Simpatia e agilita in acqua, amata per le sue espressioni buffe.</p>
-                        <a href="https://unsplash.com/it/s/foto/foca" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Simpatia e agilita in acqua.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('foca')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/foca" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="stella marina.jpg" alt="Stella Marina">
                     <div class="animal-info">
                         <h3>Stella Marina</h3>
-                        <p>La regina dei fondali, lenta ma affascinante nelle sue forme geometriche.</p>
-                        <a href="https://unsplash.com/it/s/foto/stella-marina" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>La regina dei fondali.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('stella')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/stella-marina" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="rettili" class="category-section">
-            <h2 class="category-title"> Rettili</h2>
+            <h2 class="category-title">🦎 Rettili</h2>
             <div class="image-grid">
                 <div class="animal-card">
                     <img src="Camaleonte.jpg" alt="Camaleonte">
                     <div class="animal-info">
                         <h3>Camaleonte</h3>
-                        <p>L'arte del mimetismo e dettagli ravvicinati su squame dai colori incredibili.</p>
-                        <a href="https://unsplash.com/it/s/foto/camaleonte" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>L'arte del mimetismo.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('camaleonte')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/camaleonte" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="Iguana Verde.jpg" alt="Iguana">
                     <div class="animal-info">
                         <h3>Iguana Verde</h3>
-                        <p>Un meraviglioso rettile esotico mentre si gode il calore del sole tropicale.</p>
-                        <a href="https://unsplash.com/it/s/foto/iguana" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Un rettile esotico sotto il sole tropicale.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('iguana')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/iguana" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="coccodrillo.jpg" alt="Coccodrillo">
                     <div class="animal-info">
                         <h3>Coccodrillo</h3>
-                        <p>L'antico predatore che aspetta immobile la sua preda nelle acque torbide.</p>
-                        <a href="https://unsplash.com/it/s/foto/coccodrillo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>L'antico predatore delle acque torbide.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('coccodrillo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/coccodrillo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="serpente.jpg" alt="Serpente">
                     <div class="animal-info">
                         <h3>Serpente Pitone</h3>
-                        <p>Flessuoso e potente, avvolge le sue spire con eleganza letale.</p>
-                        <a href="https://unsplash.com/it/s/foto/serpente" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Flessuoso e potente.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('serpente')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/serpente" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="lucertola.jpg" alt="Lucertola">
                     <div class="animal-info">
                         <h3>Lucertola</h3>
-                        <p>Il piccolo rettile che prende il sole sui muri dei giardini mediterranei.</p>
-                        <a href="https://unsplash.com/it/s/foto/lucertola" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il piccolo rettile che prende il sole.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('lucertola')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/lucertola" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="tartaruga.jpg" alt="Tartaruga di Terra">
                     <div class="animal-info">
                         <h3>Tartaruga di Terra</h3>
-                        <p>Lenta e saggia, porta la sua casa sul dorso ovunque vada.</p>
-                        <a href="https://unsplash.com/it/s/foto/tartaruga" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Lenta e saggia, porta la sua casa.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('tartaruga')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/tartaruga" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="drago di komo.jpg" alt="Drago di Komodo">
                     <div class="animal-info">
                         <h3>Drago di Komodo</h3>
-                        <p>Il piu grande lucertolone del mondo, predatore leggendario dell'Indonesia.</p>
-                        <a href="https://unsplash.com/it/s/foto/komodo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il piu grande lucertolone del mondo.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('komodo')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/komodo" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
                 <div class="animal-card">
                     <img src="geco.jpg" alt="Gecko">
                     <div class="animal-info">
                         <h3>Gecko</h3>
-                        <p>Il piccolo arrampicatore notturno che cammina sui muri e sui soffitti.</p>
-                        <a href="https://unsplash.com/it/s/foto/gecko" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        <p>Il piccolo arrampicatore notturno.</p>
+                        <div class="btn-container">
+                            <button class="btn-sound" onclick="playSound('geco')">🔊 Ascolta</button>
+                            <a href="https://unsplash.com/it/s/foto/gecko" target="_blank" rel="noopener" class="btn-view">Altre foto</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="zoo" class="category-section">
-            <h2 class="category-title">Zoo del Mondo</h2>
-            <p style="margin-bottom: 20px; color: #666;">Scopri gli zoo e i parchi naturalistici in tutto il mondo. Clicca sulla mappa per esplorare!</p>
+            <h2 class="category-title">🗺️ Zoo del Mondo</h2>
+            <p style="margin-bottom: 20px; color: #666;">Scopri gli zoo e i parchi naturalistici in tutto il mondo!</p>
             <div class="map-container">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31771885.03874294!2d-15.56385978940867!3d35.68890465121094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1szoos!5e0!3m2!1sit!2sit!4v1704537600000!5m2!1sit!2sit" 
@@ -603,29 +755,106 @@
                 </iframe>
             </div>
             <div style="margin-top: 25px; text-align: center;">
-                <a href="zoo-mappa.html" class="btn-view" style="background-color: #e74c3c;">
-                     Apri Mappa Completa
-                </a>
-                <a href="https://www.google.com/maps/search/zoos+in+the+world/" target="_blank" rel="noopener" class="btn-view" style="background-color: #3498db; margin-left: 10px;">
-                     Cerca su Google Maps
-                </a>
+                <a href="zoo-mappa.html" class="btn-view" style="background-color: #e74c3c;">🗺️ Apri Mappa Completa</a>
+                <a href="https://www.google.com/maps/search/zoos+in+the+world/" target="_blank" rel="noopener" class="btn-view" style="background-color: #3498db; margin-left: 10px;">🔍 Cerca su Google Maps</a>
             </div>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 FaunaView. Tutte le immagini sono fornite da Unsplash. Creato con passione.</p>
+        <p>&copy; 2026 FaunaView. Creato con passione.</p>
     </footer>
+
+    <script>
+        var currentAudio = null;
+        var currentButton = null;
+
+        var animalSounds = {
+            'leone': 'https://freesound.org/data/previews/266/266158_4756186-lq.mp3',
+            'volpe': 'https://freesound.org/data/previews/426/426868_7805476-lq.mp3',
+            'elefante': 'https://freesound.org/data/previews/181/181913_2437358-lq.mp3',
+            'giraffa': 'https://freesound.org/data/previews/172/172958_2437358-lq.mp3',
+            'zebra': 'https://freesound.org/data/previews/442/442858_944687-lq.mp3',
+            'tigre': 'https://freesound.org/data/previews/415/415777_7753503-lq.mp3',
+            'orso': 'https://freesound.org/data/previews/415/415965_7753503-lq.mp3',
+            'scimmia': 'https://freesound.org/data/previews/171/171559_2437358-lq.mp3',
+            'lupo': 'https://freesound.org/data/previews/185/185254_2437358-lq.mp3',
+            'koala': 'https://freesound.org/data/previews/415/415965_7753503-lq.mp3',
+            'cane': 'https://freesound.org/data/previews/187/187277_2437358-lq.mp3',
+            'gatto': 'https://freesound.org/data/previews/251/251464_4486188-lq.mp3',
+            'coniglio': 'https://freesound.org/data/previews/219/219477_4082826-lq.mp3',
+            'criceto': 'https://freesound.org/data/previews/183/183102_2394245-lq.mp3',
+            'pappagallo': 'https://freesound.org/data/previews/387/387020_7156389-lq.mp3',
+            'cavallo': 'https://freesound.org/data/previews/426/426025_7805476-lq.mp3',
+            'aquila': 'https://freesound.org/data/previews/415/415210_7753503-lq.mp3',
+            'uccello': 'https://freesound.org/data/previews/246/246380_4486188-lq.mp3',
+            'gufo': 'https://freesound.org/data/previews/246/246255_4486188-lq.mp3',
+            'fenicottero': 'https://freesound.org/data/previews/246/246380_4486188-lq.mp3',
+            'pettirosso': 'https://freesound.org/data/previews/246/246380_4486188-lq.mp3',
+            'pinguino': 'https://freesound.org/data/previews/181/181549_2437358-lq.mp3',
+            'tucano': 'https://freesound.org/data/previews/246/246380_4486188-lq.mp3',
+            'colibri': 'https://freesound.org/data/previews/246/246380_4486188-lq.mp3',
+            'pavone': 'https://freesound.org/data/previews/387/387493_7156389-lq.mp3',
+            'tartaruga': 'https://freesound.org/data/previews/442/442401_944687-lq.mp3',
+            'squalo': 'https://freesound.org/data/previews/272/272367_4865992-lq.mp3',
+            'delfino': 'https://freesound.org/data/previews/181/181489_2437358-lq.mp3',
+            'balena': 'https://freesound.org/data/previews/272/272031_4756186-lq.mp3',
+            'medusa': 'https://freesound.org/data/previews/531/531947_5765406-lq.mp3',
+            'polpo': 'https://freesound.org/data/previews/531/531947_5765406-lq.mp3',
+            'pesce': 'https://freesound.org/data/previews/531/531947_5765406-lq.mp3',
+            'foca': 'https://freesound.org/data/previews/181/181597_2437358-lq.mp3',
+            'stella': 'https://freesound.org/data/previews/531/531947_5765406-lq.mp3',
+            'camaleonte': 'https://freesound.org/data/previews/183/183110_2394245-lq.mp3',
+            'iguana': 'https://freesound.org/data/previews/183/183110_2394245-lq.mp3',
+            'coccodrillo': 'https://freesound.org/data/previews/171/171242_2437358-lq.mp3',
+            'serpente': 'https://freesound.org/data/previews/171/171242_2437358-lq.mp3',
+            'lucertola': 'https://freesound.org/data/previews/183/183110_2394245-lq.mp3',
+            'komodo': 'https://freesound.org/data/previews/183/183110_2394245-lq.mp3',
+            'geco': 'https://freesound.org/data/previews/183/183110_2394245-lq.mp3'
+        };
+
+        function playSound(animal) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                if (currentButton) {
+                    currentButton.classList.remove('playing');
+                }
+            }
+
+            var soundUrl = animalSounds[animal];
+            if (!soundUrl) {
+                alert('Suono non disponibile per questo animale');
+                return;
+            }
+
+            var audio = new Audio(soundUrl);
+            currentAudio = audio;
+            
+            var buttons = document.querySelectorAll('.btn-sound');
+            buttons.forEach(function(btn) {
+                if (btn.getAttribute('onclick').includes("'" + animal + "'")) {
+                    currentButton = btn;
+                    btn.classList.add('playing');
+                }
+            });
+
+            audio.play().catch(function(error) {
+                console.log('Errore riproduzione audio:', error);
+                alert('Impossibile riprodurre il suono. Verifica la connessione internet.');
+                if (currentButton) {
+                    currentButton.classList.remove('playing');
+                }
+            });
+
+            audio.addEventListener('ended', function() {
+                if (currentButton) {
+                    currentButton.classList.remove('playing');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
