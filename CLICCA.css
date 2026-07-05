@@ -20,7 +20,7 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-image: var(--primary);
+    background-color: #f3f4f6;
     color: var(--text-muted);
     line-height: 1.7;
 }
